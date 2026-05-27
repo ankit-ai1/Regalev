@@ -118,7 +118,7 @@ export default function AdminPage() {
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '36px 5% 80px' }}>
 
         {/* ── Stats Cards ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 20, marginBottom: 36 }}>
+        <div className="admin-stats-grid">
           {[
             { icon: Users,         label: 'Total Leads',    value: stats.total,     color: '#22c55e' },
             { icon: TrendingUp,    label: 'New Leads',      value: stats.newCount,  color: '#f59e0b' },
@@ -192,7 +192,7 @@ export default function AdminPage() {
                   transition: 'box-shadow 200ms',
                 }}
               >
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 16, alignItems: 'start' }}>
+                <div className="admin-lead-grid" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 16, alignItems: 'start' }}>
                   {/* Left Info */}
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
@@ -246,7 +246,7 @@ export default function AdminPage() {
                   </div>
 
                   {/* Right Actions */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end', flexShrink: 0 }}>
+                  <div className="admin-actions" style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end', flexShrink: 0 }}>
                     {/* Status changer */}
                     <select
                       value={lead.status}
@@ -293,11 +293,9 @@ export default function AdminPage() {
 
       <style>{`
         @keyframes adminSpin { to { transform: rotate(360deg); } }
-        @media (max-width: 760px) {
-          div[style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2,1fr) !important; }
-        }
         @media (max-width: 480px) {
-          div[style*="grid-template-columns: repeat(4"] { grid-template-columns: 1fr !important; }
+          .admin-lead-grid { grid-template-columns: 1fr !important; }
+          .admin-actions { flex-direction: row !important; flex-wrap: wrap !important; align-items: flex-start !important; }
         }
       `}</style>
     </div>

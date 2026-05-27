@@ -111,12 +111,7 @@ export default function ProductsPage() {
 
       {/* Products Grid */}
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '40px 5% 80px' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-          gap: 24,
-          alignItems: 'stretch',
-        }}>
+        <div className="grid-4-col">
           {filtered.map(product => (
             <div key={product.id} className="marketplace-card">
               <div className="marketplace-card__image">

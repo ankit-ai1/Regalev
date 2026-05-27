@@ -232,7 +232,7 @@ export default function LeadFormModal({
                       Fill in your details and our team will get back to you with the best offer.
                     </p>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                    <div className="form-2-col">
                       <Field icon={User} name="name" label="Full Name" placeholder="Rahul Sharma" required value={form.name} error={errors.name} onChange={handleChange} />
                       <Field icon={Phone} name="phone" label="Phone" type="tel" placeholder="98XXXXXXXX" required value={form.phone} error={errors.phone} onChange={handleChange} />
                     </div>

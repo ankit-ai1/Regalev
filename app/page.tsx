@@ -39,7 +39,7 @@ export default function Home() {
       <Hero />
 
       <section id="products-section" style={{ padding: '48px 5% 92px' }}>
-        <div style={{ maxWidth: 1540, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, minmax(280px, 1fr))', gap: 24, alignItems: 'stretch' }}>
+        <div style={{ maxWidth: 1540, margin: '0 auto' }} className="grid-4-col">
           {filteredProducts.slice(0, 4).map(product => (
             <HomepageFeaturedCard key={product.id} product={product} onEnquire={() => setEnquiryProduct(product)} />
           ))}
@@ -73,7 +73,7 @@ export default function Home() {
       </section>
 
       <section style={{ padding: '80px 5%' }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 40, alignItems: 'center' }}>
+        <div style={{ maxWidth: 1400, margin: '0 auto' }} className="section-2-col">
           <div>
             <div style={{ fontFamily: 'Orbitron', fontSize: 11, letterSpacing: 4, color: 'var(--primary)', marginBottom: 14 }}>COMPARE SECTION</div>
             <h2 style={{ fontFamily: 'Orbitron', fontSize: 'clamp(32px, 4vw, 44px)', color: 'var(--text-primary)', margin: 0 }}>Make confident decisions with comparative insight.</h2>
@@ -99,7 +99,7 @@ export default function Home() {
             <div style={{ fontFamily: 'Orbitron', fontSize: 11, letterSpacing: 4, color: 'var(--primary)', marginBottom: 14 }}>CUSTOMER REVIEWS</div>
             <h2 style={{ fontFamily: 'Orbitron', fontSize: 'clamp(32px, 4vw, 44px)', color: 'var(--text-primary)', margin: 0 }}>Riders trust Regal EV.</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(340px, 1fr))', gap: 32, alignItems: 'stretch' }}>
+          <div className="reviews-grid">
             {reviews.map(review => (
               <div key={review.name} className="testimonial-card">
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -120,10 +120,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section style={{ padding: '100px 5%' }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto', borderRadius: 28, padding: '64px 56px', background: 'rgba(var(--surface-rgb),0.96)', border: '1px solid rgba(var(--primary-rgb),0.18)', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '80px 5%' }}>
+        <div style={{ maxWidth: 1400, margin: '0 auto', borderRadius: 28, background: 'rgba(var(--surface-rgb),0.96)', border: '1px solid rgba(var(--primary-rgb),0.18)', position: 'relative', overflow: 'hidden' }} className="cta-box" >
           <div style={{ position: 'absolute', top: -40, right: -40, width: 260, height: 260, borderRadius: '50%', background: 'rgba(var(--primary-rgb),0.08)', filter: 'blur(70px)', pointerEvents: 'none' }} />
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 36, alignItems: 'center' }}>
+          <div style={{ padding: '64px 56px', position: 'relative', zIndex: 1 }} className="cta-inner-grid">
             <div>
               <div style={{ fontFamily: 'Orbitron', fontSize: 11, letterSpacing: 4, color: 'var(--primary)', marginBottom: 12 }}>TAKE ACTION</div>
               <h2 style={{ fontFamily: 'Orbitron', fontSize: 'clamp(36px, 4vw, 52px)', color: 'var(--text-primary)', margin: 0, lineHeight: 1.05 }}>Elevate your commute with a premium Regal EV today.</h2>
@@ -141,6 +141,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {enquiryProduct && (
         <LeadFormModal
           isOpen={!!enquiryProduct}
@@ -157,27 +158,12 @@ export default function Home() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(10px); }
         }
-
-        .bg-grid {
-          background-image:
-            linear-gradient(rgba(var(--primary-rgb),0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(var(--primary-rgb),0.03) 1px, transparent 1px);
-          background-size: 60px 60px;
-        }
-
-        @media (max-width: 1080px) {
-          div[style*="display: grid;"] { grid-template-columns: 1fr !important; }
-        }
-
         @media (max-width: 860px) {
-          .bg-grid { background-size: 40px 40px; }
-          section { padding: 60px 4% !important; }
-          .btn-primary, .btn-outline { width: 100% !important; }
+          .cta-box { padding: 0 !important; }
+          .cta-inner-grid { padding: 36px 24px !important; }
         }
-
-        @media (max-width: 680px) {
-          section { padding: 48px 3.5% !important; }
-          .btn-primary, .btn-outline { font-size: 13px !important; }
+        @media (max-width: 480px) {
+          .cta-inner-grid { padding: 28px 18px !important; }
         }
       `}</style>
     </div>

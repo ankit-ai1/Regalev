@@ -47,7 +47,7 @@ export default function ProductPage({ params }: PageProps) {
       </div>
 
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '48px 5% 80px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
+        <div className="product-detail-grid">
           {/* LEFT — Images */}
           <div>
             {/* Main Image */}
@@ -77,7 +77,7 @@ export default function ProductPage({ params }: PageProps) {
 
             {/* Thumbnails */}
             {product.images.length > 1 && (
-              <div style={{ display: 'flex', gap: 12, marginTop: 16 }}>
+              <div className="product-thumb-strip" style={{ display: 'flex', gap: 12, marginTop: 16, flexWrap: 'wrap' }}>
                 {product.images.map((img, i) => (
                   <button
                     key={i}
@@ -180,16 +180,7 @@ export default function ProductPage({ params }: PageProps) {
             />
 
             {/* Key specs preview */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 12,
-              marginBottom: 28,
-              padding: '20px',
-              background: 'rgba(var(--primary-rgb),0.04)',
-              border: '1px solid rgba(var(--primary-rgb),0.1)',
-              borderRadius: 12,
-            }}>
+            <div className="spec-3-grid">
               {specItems.slice(0, 3).map(({ icon: Icon, label, value }) => (
                 <div key={label} style={{ textAlign: 'center' }}>
                   <Icon size={16} color="var(--primary)" style={{ margin: '0 auto 6px' }} />
@@ -306,8 +297,9 @@ export default function ProductPage({ params }: PageProps) {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+        @media (max-width: 640px) {
+          .product-thumb-strip { gap: 8px; }
+          .product-thumb-strip button { width: 60px; height: 44px; }
         }
       `}</style>
     </div>

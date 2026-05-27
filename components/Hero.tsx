@@ -111,6 +111,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.38 }}
             style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}
+            className="hero-cta-row"
           >
             <Link href="/products" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -290,6 +291,10 @@ export default function Hero() {
         @keyframes heroPulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50%       { opacity: 0.4; transform: scale(0.85); }
+        }
+        @media (max-width: 480px) {
+          .hero-cta-row { flex-direction: column; }
+          .hero-cta-row a { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>
