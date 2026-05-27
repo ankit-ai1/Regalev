@@ -6,6 +6,7 @@ import { products, categories } from '@/lib/products';
 import type { Product } from '@/lib/store';
 import { useCompareStore } from '@/lib/store';
 import LeadFormModal from '@/components/LeadFormModal';
+import CompareButton from '@/components/CompareButton';
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -13,6 +14,7 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [enquiryProduct, setEnquiryProduct] = useState<Product | null>(null);
   const selected = useCompareStore(state => state.selected);
+  const toggleCompare = useCompareStore(state => state.toggleCompare);
   const clearCompare = useCompareStore(state => state.clearCompare);
 
   const filtered = products
@@ -140,6 +142,13 @@ export default function ProductsPage() {
                   <div>
                     <div className="marketplace-card__price">₹{product.price.toLocaleString('en-IN')}</div>
                     {product.originalPrice && <div className="marketplace-card__old-price">₹{product.originalPrice.toLocaleString('en-IN')}</div>}
+                  </div>
+                  <div style={{ minWidth: 120 }}>
+                    <CompareButton 
+                      selected={selected.some(item => item.id === product.id)}
+                      disabled={selected.length >= 3 && !selected.some(item => item.id === product.id)}
+                      onToggle={() => toggleCompare(product)}
+                    />
                   </div>
                 </div>
 

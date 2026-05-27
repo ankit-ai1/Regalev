@@ -577,7 +577,7 @@ button, input, textarea, select {
   letter-spacing: 0.5px;
   cursor: pointer;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
@@ -736,6 +736,13 @@ button, input, textarea, select {
   margin-top: auto;
 }
 
+.homepage-featured-card__actions a,
+.homepage-featured-card__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .homepage-featured-card__button {
   height: 52px;
   border-radius: 18px;
@@ -745,11 +752,12 @@ button, input, textarea, select {
   font-weight: 700;
   letter-spacing: 0.5px;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+  width: 100%;
 }
 
 .homepage-featured-card__button:hover {
