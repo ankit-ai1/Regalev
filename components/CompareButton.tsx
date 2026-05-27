@@ -3,7 +3,7 @@
 import type { Product } from '@/lib/store';
 
 interface CompareButtonProps {
-  product: Product;
+  product?: Product;
   selected: boolean;
   disabled: boolean;
   onToggle: () => void;
